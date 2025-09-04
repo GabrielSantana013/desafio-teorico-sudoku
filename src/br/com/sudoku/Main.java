@@ -24,7 +24,6 @@ public class Main {
     private final static int BOARD_LIMIT = 9;
 
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
         final var positions = Stream.of(args).collect(toMap(
                 k-> k.split(";")[0],
                 v-> v.split(";")[1]
@@ -173,8 +172,8 @@ public class Main {
             spaces.add(new ArrayList<>());
             for(int j = 0; j < BOARD_LIMIT; j++){
                 var positionConfig = positions.get("%s,%s".formatted(i,j));
-                var expected = Integer.parseInt(positionConfig.split(";")[0]);
-                var fixed = Boolean.parseBoolean(positionConfig.split(";")[1]);
+                var expected = Integer.parseInt(positionConfig.split(",")[0]);
+                var fixed = Boolean.parseBoolean(positionConfig.split(",")[1]);
                 var currentSpace = new Space(expected,fixed);
                 spaces.get(i).add(currentSpace);
 
